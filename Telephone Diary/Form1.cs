@@ -25,12 +25,15 @@ namespace Telephone_Diary
 
         private void insertButton_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Add(FNameTextBox.Text, LNameTextBox.Text, mobileTextBox.Text, mailTextBox.Text, categoryComboBox.Text);
+            if (FNameTextBox.Text != "" && LNameTextBox.Text != "" && mobileTextBox.Text != "" && mailTextBox.Text != "" && categoryComboBox.SelectedIndex >= 0)
+            {
+                dataGridView1.Rows.Add(FNameTextBox.Text, LNameTextBox.Text, mobileTextBox.Text, mailTextBox.Text, categoryComboBox.Text);
 
-            Clear();
-            FNameTextBox.Focus();
+                Clear();
+                FNameTextBox.Focus();
 
-            MessageBox.Show("Record has been saved!");
+                MessageBox.Show("Record has been saved!");
+            }
         }
 
         void Clear()
@@ -71,21 +74,24 @@ namespace Telephone_Diary
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.Rows.Count != 0)
+            if (FNameTextBox.Text != "" && LNameTextBox.Text != "" && mobileTextBox.Text != "" && mailTextBox.Text != "" && categoryComboBox.SelectedIndex >= 0)
             {
-                if (dataGridView1.CurrentCell.RowIndex > -1)
+                if (dataGridView1.Rows.Count != 0)
                 {
-                    int index = dataGridView1.CurrentCell.RowIndex;
+                    if (dataGridView1.CurrentCell.RowIndex > -1)
+                    {
+                        int index = dataGridView1.CurrentCell.RowIndex;
 
-                    dataGridView1.Rows[index].Cells[0].Value = FNameTextBox.Text;
-                    dataGridView1.Rows[index].Cells[1].Value = LNameTextBox.Text;
-                    dataGridView1.Rows[index].Cells[2].Value = mobileTextBox.Text;
-                    dataGridView1.Rows[index].Cells[3].Value = mailTextBox.Text;
-                    dataGridView1.Rows[index].Cells[4].Value = categoryComboBox.Text;
+                        dataGridView1.Rows[index].Cells[0].Value = FNameTextBox.Text;
+                        dataGridView1.Rows[index].Cells[1].Value = LNameTextBox.Text;
+                        dataGridView1.Rows[index].Cells[2].Value = mobileTextBox.Text;
+                        dataGridView1.Rows[index].Cells[3].Value = mailTextBox.Text;
+                        dataGridView1.Rows[index].Cells[4].Value = categoryComboBox.Text;
 
-                    Clear();
+                        Clear();
 
-                    MessageBox.Show("Record has been updated!");
+                        MessageBox.Show("Record has been updated!");
+                    }
                 }
             }
         }
