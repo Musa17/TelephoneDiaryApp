@@ -19,13 +19,27 @@ namespace Telephone_Diary
 
         private void newButton_Click(object sender, EventArgs e)
         {
+            Clear();
+            FNameTextBox.Focus();
+        }
+
+        private void insertButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Add(FNameTextBox.Text, LNameTextBox.Text, mobileTextBox.Text, mailTextBox.Text, categoryComboBox.Text);
+
+            Clear();
+            FNameTextBox.Focus();
+
+            MessageBox.Show("Record has been saved!");
+        }
+
+        void Clear()
+        {
             FNameTextBox.Text = "";
             LNameTextBox.Text = "";
             mobileTextBox.Text = "";
             mailTextBox.Text = "";
             categoryComboBox.SelectedIndex = -1;
-
-            FNameTextBox.Focus();
         }
     }
 }

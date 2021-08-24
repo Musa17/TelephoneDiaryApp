@@ -43,12 +43,17 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // newButton
             // 
-            this.newButton.Location = new System.Drawing.Point(492, 56);
+            this.newButton.Location = new System.Drawing.Point(484, 71);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(100, 28);
             this.newButton.TabIndex = 5;
@@ -58,12 +63,13 @@
             // 
             // insertButton
             // 
-            this.insertButton.Location = new System.Drawing.Point(492, 114);
+            this.insertButton.Location = new System.Drawing.Point(484, 121);
             this.insertButton.Name = "insertButton";
             this.insertButton.Size = new System.Drawing.Size(100, 28);
             this.insertButton.TabIndex = 6;
             this.insertButton.Text = "Insert";
             this.insertButton.UseVisualStyleBackColor = true;
+            this.insertButton.Click += new System.EventHandler(this.insertButton_Click);
             // 
             // FNameTextBox
             // 
@@ -165,15 +171,23 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FirstName,
+            this.LastName,
+            this.Mobile,
+            this.Mail,
+            this.Category});
             this.dataGridView1.Location = new System.Drawing.Point(8, 309);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(657, 209);
             this.dataGridView1.TabIndex = 14;
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(492, 172);
+            this.deleteButton.Location = new System.Drawing.Point(484, 171);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(100, 28);
             this.deleteButton.TabIndex = 7;
@@ -182,12 +196,42 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(492, 230);
+            this.updateButton.Location = new System.Drawing.Point(484, 221);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(100, 28);
             this.updateButton.TabIndex = 8;
             this.updateButton.Text = "Update";
             this.updateButton.UseVisualStyleBackColor = true;
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FirstName.HeaderText = "First name";
+            this.FirstName.Name = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LastName.HeaderText = "Last name";
+            this.LastName.Name = "LastName";
+            // 
+            // Mobile
+            // 
+            this.Mobile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Mobile.HeaderText = "Mobile";
+            this.Mobile.Name = "Mobile";
+            // 
+            // Mail
+            // 
+            this.Mail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Mail.HeaderText = "Mail";
+            this.Mail.Name = "Mail";
+            // 
+            // Category
+            // 
+            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
             // 
             // Form1
             // 
@@ -209,7 +253,9 @@
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.insertButton);
             this.Controls.Add(this.newButton);
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -234,6 +280,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mobile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
     }
 }
 
