@@ -43,17 +43,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.deleteButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // newButton
             // 
-            this.newButton.Location = new System.Drawing.Point(484, 71);
+            this.newButton.Location = new System.Drawing.Point(484, 41);
             this.newButton.Name = "newButton";
             this.newButton.Size = new System.Drawing.Size(100, 28);
             this.newButton.TabIndex = 5;
@@ -63,7 +59,7 @@
             // 
             // insertButton
             // 
-            this.insertButton.Location = new System.Drawing.Point(484, 121);
+            this.insertButton.Location = new System.Drawing.Point(484, 91);
             this.insertButton.Name = "insertButton";
             this.insertButton.Size = new System.Drawing.Size(100, 28);
             this.insertButton.TabIndex = 6;
@@ -174,12 +170,6 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FirstName,
-            this.LastName,
-            this.Mobile,
-            this.Mail,
-            this.Category});
             this.dataGridView1.Location = new System.Drawing.Point(8, 309);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -191,7 +181,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(484, 171);
+            this.deleteButton.Location = new System.Drawing.Point(484, 141);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(100, 28);
             this.deleteButton.TabIndex = 7;
@@ -201,7 +191,7 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(484, 221);
+            this.updateButton.Location = new System.Drawing.Point(484, 191);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(100, 28);
             this.updateButton.TabIndex = 8;
@@ -209,41 +199,21 @@
             this.updateButton.UseVisualStyleBackColor = true;
             this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
-            // FirstName
+            // searchBox
             // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FirstName.HeaderText = "First name";
-            this.FirstName.Name = "FirstName";
-            // 
-            // LastName
-            // 
-            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LastName.HeaderText = "Last name";
-            this.LastName.Name = "LastName";
-            // 
-            // Mobile
-            // 
-            this.Mobile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Mobile.HeaderText = "Mobile";
-            this.Mobile.Name = "Mobile";
-            // 
-            // Mail
-            // 
-            this.Mail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Mail.HeaderText = "Mail";
-            this.Mail.Name = "Mail";
-            // 
-            // Category
-            // 
-            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
+            this.searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.searchBox.Location = new System.Drawing.Point(431, 266);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(204, 26);
+            this.searchBox.TabIndex = 16;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 524);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.label5);
@@ -263,6 +233,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -286,11 +257,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button updateButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mobile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.TextBox searchBox;
     }
 }
 

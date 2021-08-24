@@ -12,6 +12,8 @@ namespace Telephone_Diary
 {
     public partial class Form1 : Form
     {
+        DataTable table;
+
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace Telephone_Diary
         {
             if (FNameTextBox.Text != "" && LNameTextBox.Text != "" && mobileTextBox.Text != "" && mailTextBox.Text != "" && categoryComboBox.SelectedIndex >= 0)
             {
-                dataGridView1.Rows.Add(FNameTextBox.Text, LNameTextBox.Text, mobileTextBox.Text, mailTextBox.Text, categoryComboBox.Text);
+                table.Rows.Add(FNameTextBox.Text, LNameTextBox.Text, mobileTextBox.Text, mailTextBox.Text, categoryComboBox.Text);
 
                 Clear();
                 FNameTextBox.Focus();
@@ -47,11 +49,13 @@ namespace Telephone_Diary
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            FNameTextBox.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            LNameTextBox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            mobileTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            mailTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            categoryComboBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            int index = dataGridView1.CurrentCell.RowIndex;
+
+            FNameTextBox.Text = table.Rows[index].ItemArray[0].ToString();
+            LNameTextBox.Text = table.Rows[index].ItemArray[1].ToString();
+            mobileTextBox.Text = table.Rows[index].ItemArray[2].ToString();
+            mailTextBox.Text = table.Rows[index].ItemArray[3].ToString();
+            categoryComboBox.Text = table.Rows[index].ItemArray[4].ToString();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -62,7 +66,7 @@ namespace Telephone_Diary
                 {
                     foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                     {
-                        dataGridView1.Rows.RemoveAt(row.Index);
+                        table.Rows[row.Index].Delete();
                     }
 
                     Clear();
@@ -82,11 +86,11 @@ namespace Telephone_Diary
                     {
                         int index = dataGridView1.CurrentCell.RowIndex;
 
-                        dataGridView1.Rows[index].Cells[0].Value = FNameTextBox.Text;
-                        dataGridView1.Rows[index].Cells[1].Value = LNameTextBox.Text;
-                        dataGridView1.Rows[index].Cells[2].Value = mobileTextBox.Text;
-                        dataGridView1.Rows[index].Cells[3].Value = mailTextBox.Text;
-                        dataGridView1.Rows[index].Cells[4].Value = categoryComboBox.Text;
+                        table.Rows[index].SetField(0, FNameTextBox.Text);
+                        table.Rows[index].SetField(1, LNameTextBox.Text);
+                        table.Rows[index].SetField(2, mobileTextBox.Text);
+                        table.Rows[index].SetField(3, mailTextBox.Text);
+                        table.Rows[index].SetField(4, categoryComboBox.Text);
 
                         Clear();
 
@@ -94,6 +98,26 @@ namespace Telephone_Diary
                     }
                 }
             }
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = table.DefaultView;
+            dv.RowFilter = "LastName LIKE '" + searchBox.Text + "%'";
+            dataGridView1.DataSource = dv;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            table = new DataTable();
+
+            table.Columns.Add("FirstName", typeof(string));
+            table.Columns.Add("LastName", typeof(string));
+            table.Columns.Add("Mobile", typeof(string));
+            table.Columns.Add("Mail", typeof(string));
+            table.Columns.Add("Category", typeof(string));
+
+            dataGridView1.DataSource = table;
         }
     }
 }
