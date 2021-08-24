@@ -57,8 +57,10 @@ namespace Telephone_Diary
             {
                 if (dataGridView1.CurrentCell.RowIndex > -1)
                 {
-                    int index = dataGridView1.CurrentCell.RowIndex;
-                    dataGridView1.Rows.RemoveAt(index);
+                    foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                    {
+                        dataGridView1.Rows.RemoveAt(row.Index);
+                    }
 
                     Clear();
 
