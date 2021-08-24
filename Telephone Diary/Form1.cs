@@ -16,5 +16,16 @@ namespace Telephone_Diary
         {
             InitializeComponent();
         }
+
+        private void newButton_Click(object sender, EventArgs e)
+        {
+            FNameTextBox.Text = "";
+            LNameTextBox.Text = "";
+            mobileTextBox.Text = "";
+            mailTextBox.Text = "";
+            categoryComboBox.SelectedIndex = -1;
+
+            FNameTextBox.Focus();
+        }
     }
 }
