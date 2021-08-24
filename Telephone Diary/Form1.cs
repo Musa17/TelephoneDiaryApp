@@ -103,7 +103,7 @@ namespace Telephone_Diary
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             DataView dv = table.DefaultView;
-            dv.RowFilter = "LastName LIKE '" + searchBox.Text + "%'";
+            dv.RowFilter = filterComboBox.Text + " LIKE '" + searchBox.Text + "%'";
             dataGridView1.DataSource = dv;
         }
 
@@ -117,7 +117,10 @@ namespace Telephone_Diary
             table.Columns.Add("Mail", typeof(string));
             table.Columns.Add("Category", typeof(string));
 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.DataSource = table;
+
+            filterComboBox.SelectedIndex = 0;
         }
     }
 }
