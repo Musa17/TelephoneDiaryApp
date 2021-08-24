@@ -41,5 +41,30 @@ namespace Telephone_Diary
             mailTextBox.Text = "";
             categoryComboBox.SelectedIndex = -1;
         }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            FNameTextBox.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            LNameTextBox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            mobileTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            mailTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            categoryComboBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count != 0)
+            {
+                if (dataGridView1.CurrentCell.RowIndex > -1)
+                {
+                    int index = dataGridView1.CurrentCell.RowIndex;
+                    dataGridView1.Rows.RemoveAt(index);
+
+                    Clear();
+
+                    MessageBox.Show("Record has been deleted!");
+                }
+            }
+        }
     }
 }
