@@ -1,6 +1,6 @@
 # TelephoneDiaryApp
 
-This is a telephone diary app made in C# programming language.  
+This is a telephone diary app made in C# programming language using Windows Forms.  
 The application is made as an exercise.  
 By Antonio Musulin  
 
